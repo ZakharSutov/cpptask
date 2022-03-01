@@ -1,0 +1,105 @@
+#include <iostream>
+
+using namespace std;
+
+struct Box
+{
+private:
+	int length, width, height, value;
+	double weight;
+
+public:
+	Box(int _length, int _width, int _height, int _value, double _weight) {
+		length = _length;
+		width = _width;
+		height = _height;
+		value = _value;
+		weight = _weight;
+	}
+
+	Box() {
+		length = 0;
+		width = 0;
+		height = 0;
+		value = 0;
+		weight = 0;
+	}
+
+	int sumValue(Box* arrBox) {
+		int sum = 0;
+		for (int i = 0; i < sizeof(arrBox) / sizeof(arrBox[0]); i++) {
+			sum += arrBox[i].value;
+		}
+		return sum;
+	}
+
+	bool compareSum(Box* arrBox, int x) {
+		int sumLWH = 0;
+		for (int i = 0; i < sizeof(arrBox) / sizeof(arrBox[0]); i++) {
+			sumLWH += arrBox[i].length + arrBox[i].width + arrBox[i].height;
+		}
+		return sumLWH <= x;
+	}
+
+	double maxWeight(Box* arrBox, int maxV) {
+		double maxW = 0;
+		int V;
+		for (int i = 0; i < sizeof(arrBox) / sizeof(arrBox[0]); i++) {
+			V = arrBox[i].length * arrBox[i].width * arrBox[i].height;
+			if (V <= maxV && maxW < arrBox[i].weight) {
+				maxW = arrBox[i].weight;
+			}
+		}
+		return maxW;
+	}
+
+
+	bool matryoshka(Box* arrBox) {
+		int t, k;
+		Box x;
+		bool flag = true;
+		for (int i = 0; i < sizeof(arrBox) / sizeof(arrBox[0]) - 1; i++)
+		{
+			t = i;
+			for (int j = i + 1; j < sizeof(arrBox) / sizeof(arrBox[0]); j++)
+			{
+				if (arrBox[i].length < arrBox[j].length && arrBox[i].width < arrBox[j].width && arrBox[i].height < arrBox[j].height) {
+					t = j;
+				}
+				x = arrBox[t];
+				arrBox[t] = arrBox[j];
+				arrBox[j] = x;
+			}
+		}
+		while (flag == true) {
+			if (arrBox[k].length < arrBox[k + 1].length && arrBox[k].width < arrBox[k + 1].width && arrBox[k].height < arrBox[k + 1].height) {
+				k++;
+			}
+			else {
+				flag = false;
+			}
+		}
+		return flag;
+	}
+
+	friend bool operator==(Box b1, Box b2) {
+		return (b1.length == b2.length && b1.width == b2.width &&
+			b1.height == b2.height && b1.weight == b2.weight && b1.value == b2.value);
+	}
+
+	friend ostream& operator<<(ostream& os, const Box& x) {
+		return os << x.length << " " << x.width << " " << x.height << " " << x.value << " " << x.weight << endl;
+	}
+
+	friend istream& operator>>(istream& in, Box& x) {
+		in >> x.length >> x.width >> x.height >> x.value >> x.weight;
+		return in;
+	}
+
+};
+
+int main()
+{
+    std::cout << "Hello World!\n";
+}
+
