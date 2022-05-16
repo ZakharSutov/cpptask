@@ -12,8 +12,8 @@ public:
 	DynamicArrayOfIntegers();
 	DynamicArrayOfIntegers(int _size);
 	DynamicArrayOfIntegers(int _size, int n);
-	DynamicArrayOfIntegers(const DynamicArrayOfIntegers& x) : size(x.size), data(new int[x.size]);
-	DynamicArrayOfIntegers(DynamicArrayOfIntegers&& x) : size(0), data(nullptr);
+	DynamicArrayOfIntegers(const DynamicArrayOfIntegers& x);
+	DynamicArrayOfIntegers(DynamicArrayOfIntegers&& x);
 	~DynamicArrayOfIntegers();
 	int getSize();
 	const int operator[](int i);

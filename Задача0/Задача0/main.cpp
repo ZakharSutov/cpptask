@@ -6,7 +6,7 @@
 using namespace std;
 using namespace BoxContainer;
 
-int main() {
+int main() {	
 	Box box;
 	Box box1(1, 1, 1, 100, 10);
 	Box box2(2, 2, 2, 120, 20);

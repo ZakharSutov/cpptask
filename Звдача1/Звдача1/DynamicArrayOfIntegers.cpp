@@ -31,7 +31,6 @@ DynamicArrayOfIntegers::DynamicArrayOfIntegers(DynamicArrayOfIntegers&& x) : siz
 	x.data = nullptr;
 }
 DynamicArrayOfIntegers::~DynamicArrayOfIntegers() {
-	size = 0;
 	delete[] data;
 }
 int DynamicArrayOfIntegers::getSize() {
@@ -116,14 +115,14 @@ bool operator<(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 		size = y.size;
 	}
 	for (int i = 0; i < size; i++) {
-		if (x.data >= y.data) {
-			return false;
+		if (x.data[i] < y.data[i]) {
+			return true;
 		}
 	}
-	if (x.size > y.size) {
-		return false;
+	if (x.size < y.size) {
+		return true;
 	}
-	return true;
+	return false;
 }
 bool operator>(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 	int size;
@@ -134,14 +133,14 @@ bool operator>(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 		size = y.size;
 	}
 	for (int i = 0; i < size; i++) {
-		if (x.data <= y.data) {
-			return false;
+		if (x.data[i] > y.data[i]) {
+			return true;
 		}
 	}
 	if (x.size > y.size) {
-		return false;
+		return true;
 	}
-	return true;
+	return false;
 }
 bool operator<=(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 	int size;
@@ -152,14 +151,14 @@ bool operator<=(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 		size = y.size;
 	}
 	for (int i = 0; i < size; i++) {
-		if (x.data > y.data) {
-			return false;
+		if (x.data < y.data) {
+			return true;
 		}
 	}
-	if (x.size > y.size) {
-		return false;
+	if (x.size <= y.size) {
+		return true;
 	}
-	return true;
+	return false;
 }
 bool operator>=(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 	int size;
@@ -170,14 +169,14 @@ bool operator>=(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 		size = y.size;
 	}
 	for (int i = 0; i < size; i++) {
-		if (x.data >= y.data) {
-			return false;
+		if (x.data > y.data) {
+			return true;
 		}
 	}
-	if (x.size < y.size) {
-		return false;
+	if (x.size >= y.size) {
+		return true;
 	}
-	return true;
+	return false;
 }
 DynamicArrayOfIntegers operator+(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y) {
 	int size;
