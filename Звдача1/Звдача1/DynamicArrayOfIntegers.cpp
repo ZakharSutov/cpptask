@@ -63,12 +63,15 @@ void DynamicArrayOfIntegers::resize(int newSize) {
 	delete[] data;
 	data = newData;
 }
-DynamicArrayOfIntegers& DynamicArrayOfIntegers::operator=(const DynamicArrayOfIntegers&& x) {
+DynamicArrayOfIntegers& DynamicArrayOfIntegers::operator=(const DynamicArrayOfIntegers& x) {
 	if (this != &x) {
 		delete[] data;
 		size = x.size;
 		data = new int[size];
-		copy(x.data, x.data + size, data);
+		//copy(x.data, x.data + size, data);
+		for (int i = 0; i < size; i++) {
+			data[i] = x.data[i];
+		}
 	}
 	return *this;
 }

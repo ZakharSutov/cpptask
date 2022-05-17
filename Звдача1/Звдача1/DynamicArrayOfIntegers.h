@@ -18,7 +18,7 @@ public:
 	int getSize();
 	const int operator[](int i);
 	void resize(int newSize);
-	DynamicArrayOfIntegers& operator=(const DynamicArrayOfIntegers&& x);
+	DynamicArrayOfIntegers& operator=(const DynamicArrayOfIntegers& x);
 	DynamicArrayOfIntegers& operator=(DynamicArrayOfIntegers&& x);
 	friend bool operator==(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y);
 	friend bool operator!=(DynamicArrayOfIntegers x, DynamicArrayOfIntegers y);

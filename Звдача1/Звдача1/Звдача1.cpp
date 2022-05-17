@@ -12,7 +12,8 @@ int main()
     cout << x.getSize() << endl;
     x.resize(5);
     cout << x[4] << endl;
-    DynamicArrayOfIntegers z = y;
+    DynamicArrayOfIntegers z;
+    z = y;
     cout << z << endl;
     DynamicArrayOfIntegers c(4, 2);
     if (z == y) cout << "True" << endl;
